@@ -8,10 +8,10 @@ import java.util.*;
 
 public class StreamMedianImpl implements StreamMedian {
 
-    int median;
-    PriorityQueue<Integer> right = new PriorityQueue<Integer>();
-    PriorityQueue<Integer> left = new PriorityQueue<Integer>(1, Collections.reverseOrder());
-    int numberCount = 0;
+    private int median;
+    private final PriorityQueue<Integer> right = new PriorityQueue<Integer>();
+    private final PriorityQueue<Integer> left = new PriorityQueue<Integer>(1, Collections.reverseOrder());
+    private int numberCount = 0;
 
     public void process(int nextNumber) {
 
