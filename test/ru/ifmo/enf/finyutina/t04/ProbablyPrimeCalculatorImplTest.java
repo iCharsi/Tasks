@@ -39,12 +39,7 @@ public class ProbablyPrimeCalculatorImplTest extends TestCase {
 
     public void testEvenN() {
         ProbablyPrimeCalculatorImpl calculator = new ProbablyPrimeCalculatorImpl(987654321);
-        try {
-            calculator.isProbablyPrime(120);
-            fail("no exception with even n");
-        } catch (IllegalArgumentException ex) {
-            //OK
-        }
+        assertEquals(false, calculator.isProbablyPrime(10));
     }
 
     public void testPrime1() {
