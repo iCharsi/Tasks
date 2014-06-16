@@ -21,6 +21,9 @@ public class ProbablyPrimeCalculatorImpl {
             return false;
         }
 
+        if (n == 3) {
+            return true;
+        }
         //n - 1 = 2^s * t
         int s = 0;
         long t = n - 1;
@@ -30,7 +33,7 @@ public class ProbablyPrimeCalculatorImpl {
         }
 
         for (int round = 0; round < ROUNDS; ++round) {
-            long a = 2 + random.nextLong() % (n - 3); //a in [2, n - 2]
+            long a = 2 + Math.abs(random.nextLong()) % (n - 3); //a in [2, n - 2]
             long x = BigInteger.valueOf(a).modPow(BigInteger.valueOf(t), BigInteger.valueOf(n)).longValue(); //x = (a^t) % n
             if (x == 1 || x == n - 1) {
                 continue;
