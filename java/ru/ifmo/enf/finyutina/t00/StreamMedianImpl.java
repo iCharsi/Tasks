@@ -1,4 +1,4 @@
-package ru.ifmo.enf.finyutina.stream_median;
+package ru.ifmo.enf.finyutina.t00;
 
 import java.util.*;
 
