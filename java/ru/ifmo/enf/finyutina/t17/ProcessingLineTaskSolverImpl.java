@@ -3,7 +3,7 @@ package ru.ifmo.enf.finyutina.t17;
 import java.util.*;
 
 /**
- * Created by HellKitsune on 24.05.14.
+ * Created by Angelika Finyutina (charsi.npc@gmail.com) on 5/24/14.
  */
 public class ProcessingLineTaskSolverImpl implements ProcessingLineTaskSolver {
 
