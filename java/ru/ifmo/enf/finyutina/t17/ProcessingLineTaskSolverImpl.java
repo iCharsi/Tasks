@@ -1,16 +1,13 @@
 package ru.ifmo.enf.finyutina.t17;
 
-import java.util.EnumMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * Created by Angelika Finyutina (charsi.npc@gmail.com) on 5/24/14.
  */
 public class ProcessingLineTaskSolverImpl implements ProcessingLineTaskSolver {
 
-    private final EnumMap<Line, Vector<Integer>> bestCost = new EnumMap<Line, Vector<Integer>>(Line.class);
+    private final Map<Line, Vector<Integer>> bestCost = new EnumMap<Line, Vector<Integer>>(Line.class);
 
     private void getSolution(List<Worktable> solution, int index, Transfer toFirstLine, Transfer toSecondLine) {
         final Worktable first = toFirstLine.getToTable();
@@ -37,7 +34,7 @@ public class ProcessingLineTaskSolverImpl implements ProcessingLineTaskSolver {
         bestCost.put(Line.FIRST, new Vector<Integer>());
         bestCost.put(Line.SECOND, new Vector<Integer>());
 
-        EnumMap<Line, Worktable> tables = new EnumMap<Line, Worktable>(Line.class);
+        Map<Line, Worktable> tables = new EnumMap<Line, Worktable>(Line.class);
         bestCost.get(Line.FIRST).add(toFirstLineTransfer.getTransferCost() + toFirstLineTransfer.getToTable().getProcessingCost());
         bestCost.get(Line.SECOND).add(toSecondLineTransfer.getTransferCost() + toSecondLineTransfer.getToTable().getProcessingCost());
         tables.put(Line.FIRST, toFirstLineTransfer.getToTable());
@@ -50,7 +47,7 @@ public class ProcessingLineTaskSolverImpl implements ProcessingLineTaskSolver {
                 throw new IllegalArgumentException("Worktable-transfer structure is broken");
             }
 
-            final EnumMap<Line, Worktable> newTables = new EnumMap<Line, Worktable>(Line.class);
+            final Map<Line, Worktable> newTables = new EnumMap<Line, Worktable>(Line.class);
 
             newTables.put(Line.FIRST, tables.get(Line.FIRST).getTransfer(Line.FIRST).getToTable());
             newTables.put(Line.SECOND, tables.get(Line.FIRST).getTransfer(Line.SECOND).getToTable());
@@ -119,7 +116,7 @@ public class ProcessingLineTaskSolverImpl implements ProcessingLineTaskSolver {
 
         private int processingCost;
         private final Line line;
-        private final EnumMap<Line, Transfer> transfer = new EnumMap<Line, Transfer>(Line.class);
+        private final Map<Line, Transfer> transfer = new EnumMap<Line, Transfer>(Line.class);
 
         public int getProcessingCost() {
             return processingCost;
