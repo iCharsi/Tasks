@@ -8,22 +8,21 @@ import java.util.Random;
  */
 public class ProbablyPrimeCalculatorImpl {
 
-    private static final int ROUNDS = 50;
+    private final static int ROUNDS = 50;
     private final Random random;
 
     public boolean isProbablyPrime(long n) {
 
-        if (n < 2) {
+        if (n <= 1) {
             throw new IllegalArgumentException();
         }
-
+        if (n <= 3) {
+            return true;
+        }
         if (n % 2 == 0) {
             return false;
         }
 
-        if (n == 3) {
-            return true;
-        }
         //n - 1 = 2^s * t
         int s = 0;
         long t = n - 1;
@@ -33,7 +32,7 @@ public class ProbablyPrimeCalculatorImpl {
         }
 
         for (int round = 0; round < ROUNDS; ++round) {
-            long a = 2 + Math.abs(random.nextLong()) % (n - 3); //a in [2, n - 2]
+            long a = 2 + Math.abs(-random.nextLong()) % (n - 3); //a in [2, n - 2]
             long x = BigInteger.valueOf(a).modPow(BigInteger.valueOf(t), BigInteger.valueOf(n)).longValue(); //x = (a^t) % n
             if (x == 1 || x == n - 1) {
                 continue;
@@ -55,11 +54,6 @@ public class ProbablyPrimeCalculatorImpl {
         }
         return true;
     }
-
-    public ProbablyPrimeCalculatorImpl(long randomSeed) {
-        random = new Random(randomSeed);
-    }
-}
 
     public ProbablyPrimeCalculatorImpl(long randomSeed) {
         random = new Random(randomSeed);
