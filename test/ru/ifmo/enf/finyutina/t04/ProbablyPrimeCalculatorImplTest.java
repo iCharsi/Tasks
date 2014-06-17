@@ -37,6 +37,11 @@ public class ProbablyPrimeCalculatorImplTest extends TestCase {
         }
     }
 
+    public void testTwoN() {
+        ProbablyPrimeCalculatorImpl calculator = new ProbablyPrimeCalculatorImpl(987654321);
+        assertEquals(true, calculator.isProbablyPrime(2));
+    }
+
     public void testEvenN() {
         ProbablyPrimeCalculatorImpl calculator = new ProbablyPrimeCalculatorImpl(987654321);
         assertEquals(false, calculator.isProbablyPrime(10));
