@@ -11,6 +11,17 @@ public class ProbablyPrimeCalculatorImpl {
     private final static int ROUNDS = 50;
     private final Random random;
 
+    //taken from stackoverflow, comments from me
+    //another solution would be to use (long)(random.nextDouble() * n), but it may lack in precision :)
+    long nextLong(Random random, long n) {
+        long bits, val;
+        do {
+            bits = (random.nextLong() << 1) >>> 1; //removing the sign bit
+            val = bits % n; //taking number in range [0..n - 1]
+        } while (bits - val + (n - 1) < 0L); //rejecting numbers that would result in an uneven distribution (due to the fact that 2^31 is not divisible by n)
+        return val;
+    }
+
     public boolean isProbablyPrime(long n) {
 
         if (n <= 1) {
@@ -32,7 +43,7 @@ public class ProbablyPrimeCalculatorImpl {
         }
 
         for (int round = 0; round < ROUNDS; ++round) {
-            long a = 2 + Math.abs(-random.nextLong()) % (n - 3); //a in [2, n - 2]
+            long a = 2 + nextLong(random, n - 3); //a in [2, n - 2]
             long x = BigInteger.valueOf(a).modPow(BigInteger.valueOf(t), BigInteger.valueOf(n)).longValue(); //x = (a^t) % n
             if (x == 1 || x == n - 1) {
                 continue;
