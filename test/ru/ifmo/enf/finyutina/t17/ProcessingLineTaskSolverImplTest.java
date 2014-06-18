@@ -51,6 +51,62 @@ public class ProcessingLineTaskSolverImplTest extends TestCase {
         return cost;
     }
 
+    public void testEqualTablesDifferentTransfers1() {
+
+        final int[][] processingCosts = new int[][] {{1}, {1}};
+        final int[][] transferCosts = new int[][] {{2}, {3}};
+
+        Pair<Transfer, Transfer> transfers = getProcessingLinesFromArrays(processingCosts, transferCosts);
+
+        ProcessingLineTaskSolver solver = new ProcessingLineTaskSolverImpl();
+        Result result = solver.getOptimalProcessingCost(transfers.getKey(), transfers.getValue());
+
+        assertEquals(3, result.getTotalCost());
+        assertEquals(3, getCostFromPath(transfers.getKey(), transfers.getValue(), result.getOptimalSolution()));
+    }
+
+    public void testEqualTablesDifferentTransfers2() {
+
+        final int[][] processingCosts = new int[][] {{1}, {1}};
+        final int[][] transferCosts = new int[][] {{3}, {2}};
+
+        Pair<Transfer, Transfer> transfers = getProcessingLinesFromArrays(processingCosts, transferCosts);
+
+        ProcessingLineTaskSolver solver = new ProcessingLineTaskSolverImpl();
+        Result result = solver.getOptimalProcessingCost(transfers.getKey(), transfers.getValue());
+
+        assertEquals(3, result.getTotalCost());
+        assertEquals(3, getCostFromPath(transfers.getKey(), transfers.getValue(), result.getOptimalSolution()));
+    }
+
+    public void testEqualTransfersDifferentTables1() {
+
+        final int[][] processingCosts = new int[][] {{1}, {2}};
+        final int[][] transferCosts = new int[][] {{3}, {3}};
+
+        Pair<Transfer, Transfer> transfers = getProcessingLinesFromArrays(processingCosts, transferCosts);
+
+        ProcessingLineTaskSolver solver = new ProcessingLineTaskSolverImpl();
+        Result result = solver.getOptimalProcessingCost(transfers.getKey(), transfers.getValue());
+
+        assertEquals(4, result.getTotalCost());
+        assertEquals(4, getCostFromPath(transfers.getKey(), transfers.getValue(), result.getOptimalSolution()));
+    }
+
+    public void testEqualTransfersDifferentTables2() {
+
+        final int[][] processingCosts = new int[][] {{2}, {1}};
+        final int[][] transferCosts = new int[][] {{3}, {3}};
+
+        Pair<Transfer, Transfer> transfers = getProcessingLinesFromArrays(processingCosts, transferCosts);
+
+        ProcessingLineTaskSolver solver = new ProcessingLineTaskSolverImpl();
+        Result result = solver.getOptimalProcessingCost(transfers.getKey(), transfers.getValue());
+
+        assertEquals(4, result.getTotalCost());
+        assertEquals(4, getCostFromPath(transfers.getKey(), transfers.getValue(), result.getOptimalSolution()));
+    }
+
     public void testSolver() {
 
         //test from Bol'shakova's presentation, last 2 transfers are included in the cost of last 2 worktables
