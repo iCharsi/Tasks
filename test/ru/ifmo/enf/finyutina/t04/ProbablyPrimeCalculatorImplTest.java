@@ -2,6 +2,8 @@ package ru.ifmo.enf.finyutina.t04;
 
 import junit.framework.TestCase;
 
+import java.util.Random;
+
 /**
  * Created by Angelika Finyutina (charsi.npc@gmail.com) on 2/28/14.
  */
@@ -9,22 +11,12 @@ public class ProbablyPrimeCalculatorImplTest extends TestCase {
 
     public void testNegativeN() {
         ProbablyPrimeCalculatorImpl calculator = new ProbablyPrimeCalculatorImpl(987654321);
-        try {
-            calculator.isProbablyPrime(-5);
-            fail("no exception with negative n");
-        } catch (IllegalArgumentException ex) {
-            //OK
-        }
+        assertEquals(false, calculator.isProbablyPrime(-5));
     }
 
     public void testZeroN() {
         ProbablyPrimeCalculatorImpl calculator = new ProbablyPrimeCalculatorImpl(987654321);
-        try {
-            calculator.isProbablyPrime(0);
-            fail("no exception with n = 0");
-        } catch (IllegalArgumentException ex) {
-            //OK
-        }
+        assertEquals(false, calculator.isProbablyPrime(0));
     }
 
     public void testOneN() {
@@ -44,7 +36,7 @@ public class ProbablyPrimeCalculatorImplTest extends TestCase {
 
     public void testThreeN() {
         ProbablyPrimeCalculatorImpl calculator = new ProbablyPrimeCalculatorImpl(987654321);
-        assertEquals(true, calculator.isProbablyPrime(2));
+        assertEquals(true, calculator.isProbablyPrime(3));
     }
 
     public void testEvenN() {
