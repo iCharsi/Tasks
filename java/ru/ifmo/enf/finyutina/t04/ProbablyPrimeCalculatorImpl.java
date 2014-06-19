@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * Created by Angelika Finyutina (charsi.npc@gmail.com) on 2/28/14.
  */
-public class ProbablyPrimeCalculatorImpl {
+public class ProbablyPrimeCalculatorImpl implements ProbablyPrimeCalculator {
 
     private final static int ROUNDS = 50;
     private final Random random;
@@ -58,7 +58,7 @@ public class ProbablyPrimeCalculatorImpl {
         return true;
     }
 
-    public ProbablyPrimeCalculatorImpl(long randomSeed) {
-        random = new Random(randomSeed);
+    public ProbablyPrimeCalculatorImpl(Random random) {
+        this.random = random;
     }
 }
