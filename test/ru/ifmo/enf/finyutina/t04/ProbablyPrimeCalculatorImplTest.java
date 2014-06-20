@@ -11,12 +11,12 @@ public class ProbablyPrimeCalculatorImplTest extends TestCase {
 
     public void testNegativeN() {
         ProbablyPrimeCalculator calculator = new ProbablyPrimeCalculatorImpl(new Random(987654321));
-        assertEquals(false, calculator.isProbablyPrime(-5));
+        assertFalse(calculator.isProbablyPrime(-5));
     }
 
     public void testZeroN() {
         ProbablyPrimeCalculator calculator = new ProbablyPrimeCalculatorImpl(new Random(987654321));
-        assertEquals(false, calculator.isProbablyPrime(0));
+        assertFalse(calculator.isProbablyPrime(0));
     }
 
     public void testOneN() {
@@ -31,32 +31,32 @@ public class ProbablyPrimeCalculatorImplTest extends TestCase {
 
     public void testTwoN() {
         ProbablyPrimeCalculator calculator = new ProbablyPrimeCalculatorImpl(new Random(987654321));
-        assertEquals(true, calculator.isProbablyPrime(2));
+        assertTrue(calculator.isProbablyPrime(2));
     }
 
     public void testThreeN() {
         ProbablyPrimeCalculator calculator = new ProbablyPrimeCalculatorImpl(new Random(987654321));
-        assertEquals(true, calculator.isProbablyPrime(3));
+        assertTrue(calculator.isProbablyPrime(3));
     }
 
     public void testEvenN() {
         ProbablyPrimeCalculator calculator = new ProbablyPrimeCalculatorImpl(new Random(987654321));
-        assertEquals(false, calculator.isProbablyPrime(10));
+        assertFalse(calculator.isProbablyPrime(10));
     }
 
     public void testPrime1() {
         ProbablyPrimeCalculator calculator = new ProbablyPrimeCalculatorImpl(new Random(987654321));
-        assertEquals(true, calculator.isProbablyPrime(1000000009));
+        assertTrue(calculator.isProbablyPrime(1000000009));
     }
 
     public void testPrime2() {
         ProbablyPrimeCalculator calculator = new ProbablyPrimeCalculatorImpl(new Random(987654321));
-        assertEquals(true, calculator.isProbablyPrime(1000000007));
+        assertTrue(calculator.isProbablyPrime(1000000007));
     }
 
     public void testNotPrime() {
         ProbablyPrimeCalculator calculator = new ProbablyPrimeCalculatorImpl(new Random(987654321));
-        assertEquals(false, calculator.isProbablyPrime((long) 1000000009 * 1000000007));
+        assertFalse(calculator.isProbablyPrime((long) 1000000009 * 1000000007));
     }
 
     public void testMinValueRandom() {
@@ -70,21 +70,21 @@ public class ProbablyPrimeCalculatorImplTest extends TestCase {
         ProbablyPrimeCalculator calculator = new ProbablyPrimeCalculatorImpl(mockRandom);
 
         //with mocked random we can only be sure that the test will return true if the prime number is given
-        assertEquals(true, calculator.isProbablyPrime(13));
-        assertEquals(true, calculator.isProbablyPrime(17));
-        assertEquals(true, calculator.isProbablyPrime(19));
-        assertEquals(true, calculator.isProbablyPrime(23));
-        assertEquals(true, calculator.isProbablyPrime(29));
-        assertEquals(true, calculator.isProbablyPrime(31));
-        assertEquals(true, calculator.isProbablyPrime(37));
-        assertEquals(true, calculator.isProbablyPrime(41));
-        assertEquals(true, calculator.isProbablyPrime(43));
-        assertEquals(true, calculator.isProbablyPrime(47));
-        assertEquals(true, calculator.isProbablyPrime(53));
-        assertEquals(true, calculator.isProbablyPrime(59));
-        assertEquals(true, calculator.isProbablyPrime(61));
-        assertEquals(true, calculator.isProbablyPrime(67));
-        assertEquals(true, calculator.isProbablyPrime(1000000007));
-        assertEquals(true, calculator.isProbablyPrime(1000000009));
+        assertTrue(calculator.isProbablyPrime(13));
+        assertTrue(calculator.isProbablyPrime(17));
+        assertTrue(calculator.isProbablyPrime(19));
+        assertTrue(calculator.isProbablyPrime(23));
+        assertTrue(calculator.isProbablyPrime(29));
+        assertTrue(calculator.isProbablyPrime(31));
+        assertTrue(calculator.isProbablyPrime(37));
+        assertTrue(calculator.isProbablyPrime(41));
+        assertTrue(calculator.isProbablyPrime(43));
+        assertTrue(calculator.isProbablyPrime(47));
+        assertTrue(calculator.isProbablyPrime(53));
+        assertTrue(calculator.isProbablyPrime(59));
+        assertTrue(calculator.isProbablyPrime(61));
+        assertTrue(calculator.isProbablyPrime(67));
+        assertTrue(calculator.isProbablyPrime(1000000007));
+        assertTrue(calculator.isProbablyPrime(1000000009));
     }
 }
