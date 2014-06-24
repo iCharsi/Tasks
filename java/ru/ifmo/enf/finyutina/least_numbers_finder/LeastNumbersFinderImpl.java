@@ -8,11 +8,9 @@ import java.util.PriorityQueue;
  */
 public class LeastNumbersFinderImpl implements LeastNumbersFinder {
 
-    private final PriorityQueue<Integer> leastK = new PriorityQueue<Integer>(1, Collections.reverseOrder());
-
     public int[] find(int input[], int k) {
 
-        leastK.clear();
+        final PriorityQueue<Integer> leastK = new PriorityQueue<Integer>(1, Collections.reverseOrder());
 
         if (k < 0 || k > input.length) {
             throw new IllegalArgumentException();
